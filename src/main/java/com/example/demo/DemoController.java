@@ -25,6 +25,13 @@ public class DemoController {
         return book;
     }
 
+    @PostMapping("/books/by-name")
+    public Book create(@RequestParam String name){
+        Book book = new Book();
+        book.name = name;
+        books.add(book);
+        return book;
+    }
 
     /*
     @GetMapping("/books/{bookId}")
