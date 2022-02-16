@@ -25,8 +25,8 @@ public class DemoController {
         return book;
     }
     @GetMapping("/api/books/{bookId}")
-    public String getTitle(@RequestParam Integer bookId){
-        return (books.get(bookId)).getTitle();
+    public Book get(@RequestParam Integer bookId){
+        return books.get(bookId-1);
     }
 /*
     @PostMapping("/books")
