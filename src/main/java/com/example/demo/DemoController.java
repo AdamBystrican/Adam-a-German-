@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +23,14 @@ public class DemoController {
         books.add(book);
         return book;
     }
-
-    @PostMapping("/api/books")
+/*
+    @PostMapping("/books")
     public Book create(@RequestParam String name){
         Book book = new Book();
         book.name = name;
         books.add(book);
         return book;
-    }
+    }*/
 
     /*
     @GetMapping("/books/{bookId}")
