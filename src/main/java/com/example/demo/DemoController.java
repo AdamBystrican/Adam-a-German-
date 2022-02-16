@@ -28,25 +28,6 @@ public class DemoController {
     public Book get(@RequestParam Integer bookId){
         return books.get(bookId-1);
     }
-/*
-    @PostMapping("/books")
-    public Book create(@RequestParam String name){
-        Book book = new Book();
-        book.name = name;
-        books.add(book);
-        return book;
-    }*/
-
-    /*
-    @GetMapping("/books/{bookId}")
-    public Book getBookbyID(@PathVariable Integer bookId){
-        return new Book("Lord of the rings" + bookId);
-    }
-
-    @PostMapping("/books")
-    public String create(@RequestBody Book book){
-        return "Hello world";
-    }*/
 
 
 
