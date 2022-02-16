@@ -21,7 +21,12 @@ public class DemoController {
     @PostMapping("/api/books")
     public Book create(@RequestBody Book book){
         books.add(book);
+        book.id = books.indexOf(book)+1;
         return book;
+    }
+    @GetMapping("/api/books/{bookId}")
+    public String getTitle(@RequestParam Integer bookId){
+        return (books.get(bookId)).getTitle();
     }
 /*
     @PostMapping("/books")
