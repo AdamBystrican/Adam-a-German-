@@ -10,7 +10,7 @@ public class DemoController {
 
     private final List<Book> books = new ArrayList<>();
 
-    @GetMapping("/books")
+    @GetMapping("/api/books")
     public List<Book> get(){
 //        List<Book> books = new ArrayList<Book>();
  //       books.add(new Book("Lord of the rings"));
@@ -19,13 +19,13 @@ public class DemoController {
         return books;
     }
 
-    @PostMapping("/books")
+    @PostMapping("/api/books")
     public Book create(@RequestBody Book book){
         books.add(book);
         return book;
     }
 
-    @PostMapping("/books/by-name")
+    @PostMapping("/api/books")
     public Book create(@RequestParam String name){
         Book book = new Book();
         book.name = name;
