@@ -7,6 +7,7 @@ import java.util.List;
 @RestController
 public class DemoController {
 
+    // BOOK-------------------------------------------
     private final List<Book> books = new ArrayList<>();
 
     @GetMapping("/api/books")
@@ -18,6 +19,18 @@ public class DemoController {
         return books;
     }
 
+    @DeleteMapping("/api/books/{bookId}")
+        public void delete(@RequestParam Integer bookId){
+            books.remove(bookId-1);
+    }
+    @PutMapping("/api/books/{bookId}")
+        public Book update(@RequestParam Integer bookId, @RequestBody Book book){
+        book.id = bookId;
+        books.set(bookId-1,book);
+        return book;
+    }
+
+
     @PostMapping("/api/books")
     public Book create(@RequestBody Book book){
         books.add(book);
@@ -28,7 +41,7 @@ public class DemoController {
     public Book get(@RequestParam Integer bookId){
         return books.get(bookId-1);
     }
-
+    // BOOK-------------------------------------------
 
 
 }
