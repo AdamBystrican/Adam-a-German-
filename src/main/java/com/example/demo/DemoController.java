@@ -12,9 +12,6 @@ public class DemoController {
 
     @GetMapping("/api/books")
     public List<Book> get(){
-//        List<Book> books = new ArrayList<Book>();
- //       books.add(new Book("Lord of the rings"));
-  //      books.add(new Book("Harry Potter"));
 
         return books;
     }
@@ -43,5 +40,35 @@ public class DemoController {
     }
     // BOOK-------------------------------------------
 
+    //Customers----------------------------------------
+    private final List<Customer> customers = new ArrayList<>();
+    @GetMapping("/api/customers")
+    public List<Customer> getCustomers(){
+
+        return customers;
+    }
+    @PostMapping("/api/customers")
+    public List<Customer> createCustomers(@RequestBody Customer customer){
+        customers.add(customer);
+        customer.id = customers.indexOf(customer)+1;
+        return customers;
+    }
+
+     @GetMapping("/api/customers/{customerId}")
+    public Customer getCustomers(@RequestParam Integer getId ){
+        return customers.get(getId-1);
+
+    }
+    @DeleteMapping("/api/customers/{customerId}")
+    public void deleteCustomers(@RequestParam Integer getId){
+        books.remove(getId-1);
+    }
+    @PutMapping("/api/customers/{customerId}")
+    public Customer updateCustomers(@RequestParam Integer customerId, @RequestBody Customer customer){
+        customer.id = customerId;
+        customers.set(customerId-1,customer);
+        return customer;
+    }
+    //Customers----------------------------------------
 
 }
