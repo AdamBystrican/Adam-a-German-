@@ -70,5 +70,33 @@ public class DemoController {
         return customer;
     }
     //Customers----------------------------------------
+    // BORROWING-------------------------------------------
+    private final List<Borrowing> borrowings= new ArrayList<>();
+
+    @GetMapping("/api/borrowings")
+    public List<Borrowing> getBorrowings(){
+        return borrowings;
+    }
+
+    @GetMapping("/api/borrowings/{borrowingId}")
+    public Borrowing getBorrowingById(@RequestParam Integer borrowingId){
+        return borrowings.get(borrowingId-1);
+    }
+
+    @PostMapping("/api/borrowings")
+    public Borrowing createBorrowing(@RequestBody Borrowing borrowing) {
+        borrowings.add(borrowing);
+        borrowing.id = borrowings.indexOf(borrowing) + 1;
+        borrowing.book = getBookById(borrowing.getBookId());
+        //borrowing.user = getUserById(borrowing.getUserId());
+        return borrowing;
+    }
+
+    @DeleteMapping("/api/borrowings/{borrowingId}")
+    public void deleteBorrowing(@RequestParam Integer borrowingId){
+        borrowings.remove(borrowingId-1);
+    }
+    // BORROWING-------------------------------------------
+
 
 }
