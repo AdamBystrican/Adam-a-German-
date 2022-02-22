@@ -60,6 +60,8 @@ public class DemoController {
     public Borrowing createBorrowing(@RequestBody Borrowing borrowing) {
         borrowings.add(borrowing);
         borrowing.id = borrowings.indexOf(borrowing) + 1;
+        borrowing.book = getBookById(borrowing.getBookId());
+        //borrowing.user = getUserById(borrowing.getUserId());
         return borrowing;
     }
 
