@@ -11,7 +11,7 @@ public class DemoController {
     private final List<Book> books = new ArrayList<>();
 
     @GetMapping("/api/books")
-    public List<Book> get(){
+    public List<Book> getBooks(){
 
         return books;
     }
@@ -55,13 +55,13 @@ public class DemoController {
     }
 
      @GetMapping("/api/customers/{customerId}")
-    public Customer getCustomers(@RequestParam Integer getId ){
-        return customers.get(getId-1);
+    public Customer getCustomersById(@RequestParam Integer customerId ){
+        return customers.get(customerId-1);
 
     }
     @DeleteMapping("/api/customers/{customerId}")
-    public void deleteCustomers(@RequestParam Integer getId){
-        books.remove(getId-1);
+    public void deleteCustomers(@RequestParam Integer customerId){
+        customers.remove(customerId-1);
     }
     @PutMapping("/api/customers/{customerId}")
     public Customer updateCustomers(@RequestParam Integer customerId, @RequestBody Customer customer){
@@ -88,7 +88,7 @@ public class DemoController {
         borrowings.add(borrowing);
         borrowing.id = borrowings.indexOf(borrowing) + 1;
         borrowing.book = getBookById(borrowing.getBookId());
-        //borrowing.user = getUserById(borrowing.getUserId());
+        borrowing.user = getCustomersById(borrowing.getCustomerId());
         return borrowing;
     }
 
