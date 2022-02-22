@@ -17,11 +17,11 @@ public class DemoController {
     }
 
     @DeleteMapping("/api/books/{bookId}")
-        public void delete(@RequestParam Integer bookId){
+        public void deleteBook(@RequestParam Integer bookId){
             books.remove(bookId-1);
     }
     @PutMapping("/api/books/{bookId}")
-        public Book update(@RequestParam Integer bookId, @RequestBody Book book){
+        public Book updateBook(@RequestParam Integer bookId, @RequestBody Book book){
         book.id = bookId;
         books.set(bookId-1,book);
         return book;
@@ -29,13 +29,13 @@ public class DemoController {
 
 
     @PostMapping("/api/books")
-    public Book create(@RequestBody Book book){
+    public Book createBook(@RequestBody Book book){
         books.add(book);
         book.id = books.indexOf(book)+1;
         return book;
     }
     @GetMapping("/api/books/{bookId}")
-    public Book get(@RequestParam Integer bookId){
+    public Book getBookById(@RequestParam Integer bookId){
         return books.get(bookId-1);
     }
     // BOOK-------------------------------------------
@@ -97,6 +97,8 @@ public class DemoController {
         borrowings.remove(borrowingId-1);
     }
     // BORROWING-------------------------------------------
+
+
 
 
 }
