@@ -28,7 +28,7 @@ public class BorrowingController {
 
     @GetMapping("/{borrowingId}")
     public Borrowing getById(@RequestParam Integer borrowingId){
-        return borrowingSerivce.getBorrowingsbyId(borrowingId);
+        return borrowingSerivce.getBorrowingbyId(borrowingId);
     }
 
     @PostMapping

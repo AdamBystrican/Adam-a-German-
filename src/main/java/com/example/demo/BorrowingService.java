@@ -19,11 +19,8 @@ public class BorrowingService {
     }
     private final List<Borrowing> borrowings= new ArrayList<>();
 
-    public Borrowing getBorrowingsbyId(@PathVariable Integer borrowingId){
-        Borrowing borrowing = new Borrowing();
-        Book book = bookService.getBookById(borrowing.getBookId());
-        Customer customer = customerService.getCustomersById(borrowing.getCustomerId());
-        return borrowing;
+    public Borrowing getBorrowingbyId(@PathVariable Integer borrowingId){
+        return borrowings.get(borrowingId-1);
     }
     public List<Borrowing> getBorrowings(){
         return borrowings;
