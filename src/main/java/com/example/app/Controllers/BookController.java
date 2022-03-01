@@ -1,12 +1,9 @@
-package com.example.demo;
+package com.example.app.Controllers;
 
+import com.example.app.Objects.Book;
+import com.example.app.Services.BookService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

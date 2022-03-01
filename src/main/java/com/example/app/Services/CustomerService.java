@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.app.Services;
 
+import com.example.app.Objects.Customer;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
