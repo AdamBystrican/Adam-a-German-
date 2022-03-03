@@ -1,17 +1,12 @@
-package com.example.app.Objects;
+package com.example.app;
 
-public class Book {
+public class BookDto {
+    private String authorFirstName;
+    private String authorLastName;
+    private String name;
+    private String isbn;
+    private int BookCount;
 
-    public long id;
-    public String authorFirstName;
-    public String authorLastName;
-    public String name;
-    public String isbn;
-    public int BookCount;
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public void setAuthorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
@@ -33,10 +28,6 @@ public class Book {
         BookCount = bookCount;
     }
 
-    public long getId() {
-        return id;
-    }
-
     public String getAuthorFirstName() {
         return authorFirstName;
     }
@@ -56,8 +47,4 @@ public class Book {
     public int getBookCount() {
         return BookCount;
     }
-
-    public Book(){
-    }
-
 }

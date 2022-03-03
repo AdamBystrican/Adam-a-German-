@@ -1,17 +1,20 @@
-package com.example.app.Objects;
+package com.example.app;
 
-public class Book {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-    public long id;
-    public String authorFirstName;
-    public String authorLastName;
-    public String name;
-    public String isbn;
-    public int BookCount;
+@Entity
+public class BookEntity {
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String authorFirstName;
+    private String authorLastName;
+    private String name;
+    private String isbn;
+    private int BookCount;
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public void setAuthorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
@@ -31,10 +34,6 @@ public class Book {
 
     public void setBookCount(int bookCount) {
         BookCount = bookCount;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getAuthorFirstName() {
@@ -57,7 +56,11 @@ public class Book {
         return BookCount;
     }
 
-    public Book(){
+    public void setId(Long id) {
+        this.id = id;
     }
 
+    public Long getId() {
+        return id;
+    }
 }
