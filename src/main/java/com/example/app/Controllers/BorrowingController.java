@@ -17,7 +17,7 @@ public class BorrowingController {
 
     // BORROWING-------------------------------------------
 
-
+/*
     @GetMapping
     public List<Borrowing> get(){
         return borrowingSerivce.getBorrowings();
@@ -37,6 +37,6 @@ public class BorrowingController {
     @DeleteMapping("/{borrowingId}")
     public void deleteBorrowing(@RequestParam Integer borrowingId){
         borrowingSerivce.deleteBorrowing(borrowingId);
-    }
+    }*/
     // BORROWING-------------------------------------------
 }
