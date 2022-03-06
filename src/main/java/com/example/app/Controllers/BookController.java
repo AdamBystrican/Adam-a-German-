@@ -1,6 +1,6 @@
 package com.example.app.Controllers;
 
-import com.example.app.Objects.Book;
+import com.example.app.Bookdata.BookDto;
 import com.example.app.Services.BookService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,29 +19,27 @@ public class BookController {
 
 
     @GetMapping
-    public List<Book> get(){
-        return bookService.getBooks();
+    public List<BookDto> getBooks(@RequestParam(required = false) String bookAutrhor){
+        return bookService.getBooks(bookAutrhor);
     }
 
     @DeleteMapping("/{bookId}")
-    public void delete(@RequestParam Integer bookId){
+    public void delete(@PathVariable int bookId){
         bookService.deleteBook(bookId);
     }
     @PutMapping("/{bookId}")
-    public Book update(@RequestParam Integer bookId, @RequestBody Book book){
-        bookService.updateBook(bookId,book);
-        return book;
+    public void updateBook(@PathVariable int bookId, @RequestBody BookDto bookDto){
+        bookService.updateBook(bookId,bookDto);
     }
 
 
     @PostMapping
-    public Book create(@RequestBody Book book){
-        bookService.createBook(book);
-        return book;
+    public Long create(@RequestBody BookDto bookDto){
+        return bookService.createBook(bookDto);
     }
     @GetMapping("/{bookId}")
-    public Book getById(@RequestParam Integer bookId){
-        return bookService.getBookById(bookId);
+    public BookDto getBook(@PathVariable Long bookId){
+        return bookService.getBook(bookId);
     }
     // BOOK-------------------------------------------
 }

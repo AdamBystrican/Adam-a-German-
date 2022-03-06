@@ -1,6 +1,14 @@
-package com.example.app;
+package com.example.app.Bookdata;
 
-public class BookDto {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class BookEntity {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String authorFirstName;
     private String authorLastName;
     private String name;
@@ -46,5 +54,13 @@ public class BookDto {
 
     public int getBookCount() {
         return BookCount;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

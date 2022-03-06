@@ -18,6 +18,8 @@ public class BorrowingService {
         this.bookService = bookService;
         this.customerService = customerService;
     }
+
+    /*
     private final List<Borrowing> borrowings= new ArrayList<>();
 
     public Borrowing getBorrowingbyId(@PathVariable Integer borrowingId){
@@ -29,7 +31,7 @@ public class BorrowingService {
 
 
     public Borrowing createBorrowing(@RequestBody Borrowing borrowing) {
-        borrowing.book = bookService.getBookById(borrowing.getBookId());
+        borrowing.book = bookService.getBook(borrowing.getBookId());
         borrowing.user = customerService.getCustomersById(borrowing.getCustomerId());
         borrowings.add(borrowing);
         borrowing.id = borrowings.indexOf(borrowing) + 1;
@@ -37,6 +39,6 @@ public class BorrowingService {
     }
     public void deleteBorrowing(@RequestParam Integer borrowingId){
         borrowings.remove(borrowingId-1);
-    }
+    }*/
 
 }
