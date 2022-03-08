@@ -1,5 +1,6 @@
 package com.example.app.Controllers;
 
+import com.example.app.Customerdata.CustomerDto;
 import com.example.app.Objects.Customer;
 import com.example.app.Services.CustomerService;
 import org.springframework.web.bind.annotation.*;
@@ -17,27 +18,25 @@ public class CustomerController {
     //Customers----------------------------------------
 
     @GetMapping
-    public List<Customer> get(){
-        return customerService.getCustomers();
+    public List<CustomerDto> getCustomers(@RequestParam(required = false) String customer){
+        return customerService.getCustomers(customer);
     }
     @PostMapping
-    public Customer createCustomers(@RequestBody Customer customer){
-        customerService.createCustomers(customer);
-        return customer;
+    public Long createCustomer(@RequestBody CustomerDto customerDto){
+        return customerService.createCustomer(customerDto);
     }
 
     @GetMapping("/{customerId}")
-    public Customer getById(@RequestParam Integer customerId ){
-        return customerService.getCustomersById(customerId);
+    public CustomerDto getCustomer(@PathVariable Long customerId ){
+        return customerService.getCustomer(customerId);
     }
     @DeleteMapping("/{customerId}")
-    public void deleteCustomers(@RequestParam Integer customerId){
-        customerService.deleteCustomers(customerId);
+    public void deleteCustomer(@PathVariable int customerId){
+        customerService.deleteCustomer(customerId);
     }
     @PutMapping("/{customerId}")
-    public Customer updateCustomers(@RequestParam Integer customerId, @RequestBody Customer customer){
-        customerService.updateCustomers(customerId, customer);
-        return customer;
+    public void updateCustomer(@PathVariable int customerId, @RequestBody CustomerDto customerDto){
+        customerService.updateCustomer(customerId, customerDto);
     }
     //Customers----------------------------------------
 }
