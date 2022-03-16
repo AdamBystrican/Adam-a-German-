@@ -1,40 +1,34 @@
 package com.example.app.Borrowingdata;
 
-import com.example.app.Objects.Book;
-import com.example.app.Objects.Customer;
+import com.example.app.Bookdata.BookEntity;
+import com.example.app.Customerdata.CustomerEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BorrowingEntity {
-
     @Id
     @GeneratedValue
     private Long id;
-    private long bookId;
-    private int customerId;
-    private Customer user;
-    private Book book;
+
+    @ManyToOne
+    private CustomerEntity borrower;
+
+    @ManyToOne
+    private BookEntity book;
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
+    public void setBorrower(CustomerEntity borrower) {
+        this.borrower = borrower;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public void setUser(Customer user) {
-        this.user = user;
-    }
-
-    public void setBook(Book book) {
+    public void setBook(BookEntity book) {
         this.book = book;
     }
 
@@ -42,19 +36,11 @@ public class BorrowingEntity {
         return id;
     }
 
-    public long getBookId() {
-        return bookId;
+    public CustomerEntity getBorrower() {
+        return borrower;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public Customer getUser() {
-        return user;
-    }
-
-    public Book getBook() {
+    public BookEntity getBook() {
         return book;
     }
 }
