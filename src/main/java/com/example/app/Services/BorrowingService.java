@@ -2,11 +2,15 @@ package com.example.app.Services;
 
 import com.example.app.Bookdata.BookDto;
 import com.example.app.Bookdata.BookEntity;
+import com.example.app.Bookdata.BookRepository;
 import com.example.app.Borrowingdata.BorrowingDto;
 import com.example.app.Borrowingdata.BorrowingEntity;
 import com.example.app.Borrowingdata.BorrowingRepository;
+import com.example.app.Customerdata.CustomerEntity;
+import com.example.app.Customerdata.CustomerRepository;
 import com.example.app.Objects.Borrowing;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
 import java.util.LinkedList;
@@ -53,14 +57,6 @@ public class BorrowingService {
             ret.add(b2);
         }
         return ret;
-    }
-    @Transactional
-    public void updateBorrowing(int borrowingId, BorrowingDto borrowingDto) {
-        Optional<BorrowingEntity> byId = borrowingRepository.findById((long)borrowingId);
-        if (byId.isPresent()) {
-            byId.get().setBorrower(borrowingDto.getBorrower());
-            byId.get().setBook(borrowingDto.getBook());
-        }
     }
 
     @Transactional

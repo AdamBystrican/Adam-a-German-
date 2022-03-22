@@ -27,15 +27,12 @@ public class BorrowingController {
     public void delete(@PathVariable int borrowingId){
         borrowingService.deleteBorrowing(borrowingId);
     }
-    @PutMapping("/{borrowingId}")
-    public void updateBorrowing(@PathVariable int borrowingId, @RequestBody BorrowingDto borrowingDto){
-        borrowingService.updateBorrowing(borrowingId,borrowingDto);
-    }
+
     @PostMapping
     public Long create(@RequestBody BorrowingDto borrowingDto){
         return borrowingService.createBorrowing(borrowingDto);
     }
-    @GetMapping("/{bookId}")
+    @GetMapping("/{borrowingId}")
     public BorrowingDto getBorrowing(@PathVariable Long borrowingId){
         return borrowingService.getBorrowing(borrowingId);
     }
