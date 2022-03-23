@@ -20,24 +20,33 @@ import java.util.Optional;
 @Service
 public class BorrowingService {
     private BorrowingRepository borrowingRepository;
+    private CustomerRepository customerRepository;
+    private BookRepository bookRepository;
 
-
-    public BorrowingService(BorrowingRepository borrowingRepository) {
+    public BorrowingService(BorrowingRepository borrowingRepository, CustomerRepository customerRepository, BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+        this.customerRepository = customerRepository;
         this.borrowingRepository = borrowingRepository;
     }
 
     private static BorrowingDto mapToBorrowingDto(BorrowingEntity borrowingEntity) {
         BorrowingDto borrowingDto = new BorrowingDto();
-        borrowingDto.setBorrower(borrowingEntity.getBorrower());
-        borrowingDto.setBook(borrowingEntity.getBook());
+        borrowingDto.setBorrower(borrowingEntity.getBorrower().getFirstName() + " " + borrowingEntity.getBorrower().getLastName());
+        borrowingDto.setBook(borrowingEntity.getBook().getName());
+        borrowingDto.setBookId(borrowingEntity.getBook().getId());
+        borrowingDto.setBoorrowerId(borrowingEntity.getBorrower().getId());
 
         return borrowingDto;
     }
     @Transactional
     public Long createBorrowing(BorrowingDto borrowingDto){
         BorrowingEntity be = new BorrowingEntity();
-        be.setBorrower(borrowingDto.getBorrower());
-        be.setBook(borrowingDto.getBook());
+        Optional<CustomerEntity> CbyId = customerRepository.findById(borrowingDto.getBorrowerId());
+        if(CbyId.isPresent())
+            be.setBorrower(CbyId.get());
+        Optional<BookEntity> BbyId = bookRepository.findById(borrowingDto.getBookId());
+        if(BbyId.isPresent())
+            be.setBook(BbyId.get());
         this.borrowingRepository.save(be);
         return be.getId();
     }
